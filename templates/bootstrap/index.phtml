@@ -1,0 +1,35 @@
+{% include 'head.phtml' %}
+<body class="nav-md">
+    <div class="container body">
+		<div class="main_container">
+			{% include 'side_menu.phtml' %}
+		<div class="right_col" role="main">
+		
+		{%include 'topmenu.phtml' %}
+		
+		{% include 'content.phtml' %}
+
+		</div>
+	</div>
+	{% include 'footer.phtml' %}
+
+<!--scripts -->
+
+    <!-- jQuery -->
+    <script src="{{ template }}/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="{{ template }}/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+
+
+    <!-- Custom Theme Scripts -->
+    <script src="{{ template }}/js/custom.js"></script>
+
+    
+    <!-- /gauge.js -->
+
+	<!--/scripts -->
+	
+	
+</body>
+</html>

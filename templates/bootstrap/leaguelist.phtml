@@ -1,0 +1,156 @@
+{% include 'head.phtml' %}
+<body class="nav-md">
+    <div class="container body">
+		<div class="main_container">
+			{% include 'side_menu.phtml' %}
+		<div class="right_col" role="main">
+		
+		{%include 'topmenu.phtml' %}
+		
+ <div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">		
+					<h2>List of all user Leagues</h2>
+					<div class="clearfix"></div>
+				</div>
+				<div class="x_content">	
+					<table id="leaguetable" class="table table-striped table-bordered">
+                      <thead>
+							<tr>
+							<th>
+						League Name
+							</th>	
+							<th>
+						Number of Events
+							</th>								
+							</tr>
+						</thead>
+<tbody>
+	{% for data in leagueinfo.servers %}
+	<tr>
+	<td><a href="/userleague/{{data.ID}}.html">{{data.LeagueName}}</a></td>
+    <td>{{data.events}}</td>
+	</tr>
+	{%endfor%}
+</tbody>
+</table>
+{% if profile %}
+
+<a class="green" data-toggle="modal" data-target=".bs-example-modal-lg">Create a new League</a>
+</div>
+<div id="form-content" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                          </button>
+                          <h4 class="modal-title" id="myModalLabel">Create a new league</h4>
+                        </div>
+                        <div class="modal-body">
+						<div id="thanks">
+                           <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">League Name<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="LeagueName" required="required" name="LeagueName" class="form-control col-md-7 col-xs-12">						   
+                        </div>
+                      </div>
+					  <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Description<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <textarea class="form-control" rows="2" id="Description'" required="required" name="Description" class="form-control col-md-7 col-xs-12"></textarea>					   
+                        </div>
+                      </div>
+					  
+                      <div class="ln_solid"></div>
+                      
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                          <button data-dismiss="modal" class="btn btn-primary">Cancel</button>
+                          <button id="submit" type="button" class="btn btn-success">Submit</button>
+                        </div>
+						</form>
+                     
+
+                    
+                        
+                    </div>
+                  </div>
+				  </div>
+				  </div>
+				  </div>
+{%endif%}
+</div>	
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class="clearfix"></div>
+</div>
+
+
+	{% include 'footer.phtml' %}
+
+<!--scripts -->
+
+    <!-- jQuery -->
+    <script src="{{ template }}/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="{{ template }}/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+
+	<!--/scripts -->
+<!-- Datatables -->
+    <script src="/{{ template }}/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/{{ template }}/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="/{{ template }}/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/{{ template }}/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="/{{ template }}/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="/{{ template }}/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="/{{ template }}/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="/{{ template }}/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="/{{ template }}/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="/{{ template }}/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="/{{ template }}/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="/{{ template }}/vendors/datatables.net-scroller/js/datatables.scroller.min.js"></script>
+    <script src="/{{ template }}/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="/{{ template }}/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="/{{ template }}/vendors/pdfmake/build/vfs_fonts.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="{{ template }}/js/custom.js"></script>
+<script>
+ $(function() {
+//twitter bootstrap script
+ $("button#submit").click(function(){
+         $.ajax({
+     type: "POST",
+ url: "process.php",
+ data: $('form#demo-form2').serialize(),
+         success: function(msg){
+                 $("#thanks").html(msg)
+        $("#form-content").bs-example-modal-lg('hide'); 
+         },
+ error: function(){
+ alert("failure");
+ }
+       });
+ });
+});
+</script>
+
+<script>
+ {% if leagueinfo.servers|length > 4 %}
+ $('#leaguetable').dataTable();
+ {%endif%} 
+ </script>	
+	
+</body>
+</html>

@@ -1,0 +1,24 @@
+<div class="tab-pane fade active in" id="tab_{{content.Type}}" role="tabpanel">
+<table class="table table-hover ">
+  <thead>
+  <tr>
+    <th>Position</th>
+    <th>Driver Name</th>
+    <th>Car</th>
+    <th>Time</th>
+  </tr>
+ </thead>
+<tbody>
+ 		  {% for players in content.Players %}
+		    <tr>
+				<td>{{ players.Position|e }} </td>
+				<td><a class="green" href="/drivers/{{ players.PlayerID }}.html">{{ players.FullName }}</a> </td>
+				<td>{{ players.Car|e }} </td>
+				<td>{% if players.BestLapTime > 0 %} 
+				{{ players.BestLapTime|e }} 
+				{% else %} No Laptime Set {% endif %} </td>
+			</tr>
+     		{% endfor %} 
+</tbody>
+</table>
+</div>

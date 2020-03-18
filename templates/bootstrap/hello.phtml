@@ -1,0 +1,173 @@
+<!doctype html>
+      <html class="no-js" lang="en">
+        <head>
+          <meta charset="utf-8" />
+          <meta http-equiv="x-ua-compatible" content="ie=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>HRG Internal approval system.</title>
+          <link rel="stylesheet" href="/css/foundation.css" />
+        </head>        
+	<body>
+		
+		<div class="row" data-equalizer>
+			<div class="medium-6 columns"><p>File name: {{filename}}</p></div>
+			<div class="medium-3 columns"><p>Uploaded on: {{UploadedOn}}</p></div>
+			<div class="medium-3 columns"><p>Implementer: {{Implementer}}</p></div>
+		</div>
+		<div class="row" data-equalizer>
+			<div class="large-8 columns callout primary" data-equalizer-watch>
+		{% if filetype == "video/mp4" %} 
+			<div class="flex-video">
+				<video controls>
+  				<source src="http://idleracing.uk.to/~hrg/diapupload/{{ linkgen }}{{ filename }}" type="video/mp4">
+					Your browser does not support the video tag.
+				</video> 
+			</div>
+		{% else %}
+	<a data-toggle="exampleModal8"><img id="h5" src="http://idleracing.uk.to/~hrg/diapupload/{{ linkgen }}{{ filename }}">		</a>
+      
+      <div class="full reveal" id="exampleModal8" data-reveal>
+      <img id="h5" src="http://idleracing.uk.to/~hrg/diapupload/{{ linkgen }}{{ filename }}">		
+        <button class="close-button" data-close aria-label="Close reveal" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+		{% endif %}
+			</div>
+			<div class="large-4 columns callout secondary" data-equalizer-watch>
+<form id="approvalform" action="http://idleracing.uk.to/~hrg/update.php" method="post">
+     
+<div class="row">
+          <div class="medium-6 columns">
+            
+              <p>{{ CreativeDirector }}</p>
+            
+          </div>
+			{% if CDapproval == false %}    
+          <div class="medium-4 columns">
+            <label>Approval
+              <div class="switch large">
+        <input autocomplete="off" class="switch-input" id="CDapprove" type="checkbox" value="1" name="CDapproval">
+        <label class="switch-paddle" for="CDapprove">
+          <span class="show-for-sr">Aproval</span>
+          <span class="switch-active" aria-hidden="true">Yes</span>
+          <span class="switch-inactive" aria-hidden="true">No</span>
+        </label>
+      </div>
+            </label>
+          </div>
+{%else%}
+<div class="medium-6 columns">
+<span class="label success [radius round]">Approved</span>
+</div>
+{%endif%}
+		
+</div>
+<div class="row">
+          <div class="medium-6 columns">
+            
+              <p>{{ BrandChamp }}</p>
+            
+          </div>
+			{% if BCapproval == false %}    
+          <div class="medium-4 columns">
+            <label>Approval
+              <div class="switch large">
+        <input autocomplete="off" class="switch-input" id="BCapprove" type="checkbox" value="1" name="BCapproval">
+        <label class="switch-paddle" for="BCapprove">
+          <span class="show-for-sr">Aproval</span>
+          <span class="switch-active" aria-hidden="true">Yes</span>
+          <span class="switch-inactive" aria-hidden="true">No</span>
+        </label>
+      </div>
+            </label>
+          </div>
+{%else%}
+<div class="medium-6 columns">
+<span class="label success [radius round]">Approved</span>
+</div>
+{%endif%}
+	</div>
+<div class="row">
+          <div class="medium-6 columns">
+            
+              <p>{{ AccountHandler }}</p>
+            
+          </div>
+			{% if AHapproval == false %}    
+          <div class="medium-4 columns">
+            <label>Approval
+              <div class="switch large">
+        <input autocomplete="off" class="switch-input" id="AHapprove" type="checkbox" value="1" name="AHapproval">
+        <label class="switch-paddle" for="AHapprove">
+          <span class="show-for-sr">Aproval</span>
+          <span class="switch-active" aria-hidden="true">Yes</span>
+          <span class="switch-inactive" aria-hidden="true">No</span>
+        </label>
+      </div>
+            </label>
+          </div>
+{%else%}
+<div class="medium-6 columns">
+<span class="label success [radius round]">Approved</span>
+</div>
+{%endif%}
+		
+</div>		
+	
+<div class="row large-12 columns">
+<hr>
+	<ul class="no-bullet">
+{% for comment in comments%}
+		<li><p>{{ comment.comment }}</p>
+			<p class="small"> {{ comment.time }}</p>
+</li>
+    {% endfor %}
+	</ul>
+	<label>
+        Add comments here.
+        <textarea autocomplete="off" name="comment" placeholder="" aria-describedby="commentsHelpText" ></textarea>
+      </label>
+<p class="help-text" id="commentsHelpText">Add any comments to a new line with your initials at the start.</p>
+<input type="submit" class="button" value="Submit"></div>
+<input type="hidden" name="fileID" value="{{ fileID }}">
+      </form>
+
+</div>	
+		</div>
+
+<script src="/js/vendor/jquery.min.js"></script>
+<script src="/js/vendor/what-input.min.js"></script>
+<script src="/js/foundation.min.js"></script>
+<script>
+ $(document).foundation();
+</script>
+<script>
+jQuery(function() {jQuery('#h5').bind('load', function() {
+    jQuery('div').imagefit();
+})});
+</script>
+    <script>
+      $(function () {
+
+        $('form').on('submit', function (e) {
+
+          e.preventDefault();
+
+          $.ajax({
+            type: 'post',
+            url: 'http://idleracing.uk.to/~hrg/update.php',
+            data: $('form').serialize(),
+            success: function () {
+               location.reload();
+            }
+          });
+
+        });
+
+      });
+    </script>
+
+      
+        </body>
+      </html>

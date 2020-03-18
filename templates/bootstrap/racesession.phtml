@@ -1,0 +1,80 @@
+<div class="tab-pane fade" id="tab_{{content.Type}}" role="tabpanel">
+<table class="table table-hover ">
+  <thead>
+  <tr class="headings">
+    <th>Position</th>
+    <th>Driver Name</th>
+    <th>Car</th>
+    <th>Best Lap Time</th>
+	<th>Race Time</th>
+	
+	<th>Pitstops</th>
+	<th>Consistency</th>
+	<th>Points</th>
+	<th>Laps</th>
+  </tr>
+ </thead>
+	<tbody>
+ 		  {% for players in content.Players %}
+		       <tr data-toggle="collapse" data-target="#accordion{{loop.index}}" class="clickable">
+				<td>{{ players.Position|e }} </td>
+				<td><a class="green" href="/drivers/{{ players.PlayerID }}.html">{{ players.FullName }}</a> </td>
+				<td>{{ players.Car|e }} </td>
+				<td>{% if players.BestLapTime > 0 %} 
+				{{ players.BestLapTime|e }} 
+				{% else %} N/A {% endif %} </td>
+				<td>{% if players.TotalTime > 0 %} 
+				{{ players.TotalTime|e }} 
+				{% else %} DNF {% endif %} </td>
+				<td> {{ players.Pitstops }} </td>
+				<td> {{ players.Consistency }}% </td>
+				<td> {{ players.Points }} </td>
+				<td class="green">{{ players.Racesessionlaps|length }} <i class="fa fa-chevron-down"></i></td>
+        </tr>
+		<tr>
+            <td colspan="7" style="padding:0">
+                <div id="accordion{{loop.index}}" class="collapse">
+				<table class="table">
+							<thead>
+								<tr>
+								<th>Lap</th>
+								<th>Time</th>
+								<th>Position</th>
+								<th>Pit</th>
+								</tr>
+							</thead>
+							<tbody>
+			{% for laps in players.Racesessionlaps %}
+				
+								<tr {% if laps.PitStopOccured %}class="success"{% endif %}>
+									<td>
+										{{ loop.index }}
+									</td>
+									<td>
+										{{ laps.Time }}
+									</td>
+									<td>
+										{{ laps.Position }}
+									</td>
+									<td>
+										{% if laps.PitStopOccured %}
+										 <i class="fa fa-wrench"></i>
+										{% else %}
+										 
+										{% endif %}
+									</td>
+								</tr>
+					
+     		{% endfor %} 
+							</tbody>
+					</table>
+				</div>
+            </td>
+        </tr>
+			
+			
+		{% endfor %} 
+		
+	</tbody>
+</table>
+</div>

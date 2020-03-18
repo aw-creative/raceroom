@@ -1,0 +1,130 @@
+{% include 'head.phtml' %}
+<link href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.css" rel="stylesheet"/>
+    <script src="/{{ template}}/vendors/jquery/dist/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script>
+  $(function() {
+    $( "#driverName" ).autocomplete({
+      source: "asyncsearch.php",
+	  minLength: 3,
+    });
+  });
+  </script>
+<body class="nav-md">
+    <div class="container body">
+		<div class="main_container">
+			{% include 'side_menu.phtml' %}
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Registration Form</h3>
+              </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                              <button class="btn btn-default" type="button">Go!</button>
+                          </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="row">
+
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Sign Up <small>Link your steam profile to your driver.</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Settings 1</a>
+                          </li>
+                          <li><a href="#">Settings 2</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+
+                    <!-- Smart Wizard -->
+                    <p>This is a basic form so we can link your steam profile to a driver, We dont store any information other than your public steam profile ID and your steam password is never sent to us.</p>
+               
+                        <form class="form-horizontal form-label-left" action="/register.php" method="post">
+{%if error %}
+<div class="alert alert-danger" role="alert">There is No driver With this name</div>
+{% endif %}
+                          <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="driverName">Driver Name<span class="required">*</span>
+                            </label>
+							
+						
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input type="text" name ="driverName" id="driverName" required="required" class="form-control col-md-7 col-xs-12" placeholder="Begin typing your drivers name">
+                            </div>
+                          </div>
+                          <input id="submit" name ="submit" type="submit" value="submit">
+
+                        </form>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+{% include 'footer.phtml' %}
+		</div>
+	</div>
+
+
+
+    <!-- jQuery -->
+
+    <!-- Bootstrap -->
+    <script src="/{{ template}}/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="/{{ template}}/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="/{{ template}}/vendors/nprogress/nprogress.js"></script>
+    <!-- jQuery Smart Wizard -->
+    <script src="/{{ template}}/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="/{{ template}}/js/custom.js"></script>
+
+    <!-- jQuery Smart Wizard -->
+    <script>
+      $(document).ready(function() {
+        $('#wizard').smartWizard();
+
+        $('#wizard_verticle').smartWizard({
+          transitionEffect: 'slide'
+        });
+
+        $('.buttonNext').addClass('btn btn-success');
+        $('.buttonPrevious').addClass('btn btn-primary');
+        $('.buttonFinish').addClass('btn btn-default');
+      });
+    </script>
+    <!-- /jQuery Smart Wizard -->
+
+		
+  </body>
+</html>

@@ -1,0 +1,33 @@
+{% include 'head.phtml' %}
+<body class="nav-md">
+    <div class="container body">
+		<div class="main_container">
+			{% include 'side_menu.phtml' %}
+		<div class="right_col" role="main">
+		{%include 'topmenu.phtml' %}	
+				{% include 'profile.phtml' %}
+		</div>
+	</div>
+	{% include 'footer.phtml' %}
+
+<!--scripts -->
+
+   <!--scripts -->
+
+    <!-- jQuery -->
+    <script src="/{{ template }}/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="/{{ template }}/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="/{{ template }}/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="/{{ template }}/vendors/nprogress/nprogress.js"></script>
+
+	<script src="/{{ template }}/vendors/Chart.js/dist/Chart.min.js"></script>
+	
+    <!-- Custom Theme Scripts -->
+    <script src="/{{ template }}/js/custom.js"></script>
+	
+	
+</body>
+</html>

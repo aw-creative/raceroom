@@ -1,0 +1,271 @@
+{% include 'head.phtml' %}
+<body class="nav-md">
+    <div class="container body">
+		<div class="main_container">
+			{% include 'side_menu.phtml' %}
+			 <div class="right_col" role="main">
+				<div class="">		 
+				<div class="page-title">
+					<div class="title_left">
+						<h3>{{ Server.Server }}</h3>
+					</div>
+
+					<div class="title_right">
+						<div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+							<div class="input-group">
+								<input class="form-control" type="text" placeholder="Search for...">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button">Go!</button>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+			<div class="x_panel">
+				<div class="x-title">
+					<h2> Server Details </h2>
+				</div>
+				<div class="col-md-12">
+					<div class= "jumbotron" style="background: url(/images/tracks/{{ Server.TrackImage }}.jpg) no-repeat center; background-size: cover">
+						<h1 style="color:#fff">{{ Server.Track }} </h1>		
+					</div>
+				</div>
+				<div class="col-md-3">
+				<ul class="list-unstyled">
+					<li><b>Date:</b>{{ Server.Date }}</li>
+					<li><b>Experience:</b> {{ Server.Experience }} </li>
+					<li><b>Difficulty:</b> {{ Server.Difficulty }} </li>
+					<li><b>Format:</b> {{ Server.RaceSeriesFormat }} </li>
+				</ul>
+				</div>
+				<div class="col-md-3">
+					<ul class="list-unstyled">
+						<li><b>Wrecker prevention:</b> {{ Server.WreckerPrevention }} </li>
+						<li><b>Mechanical Damage:</b> {{ Server.MechanicalDamage }} </li>
+						<li><b>Flag Rules:</b> {{ Server.FlagRules }} </li>
+						<li><b>Cut Rules:</b> {{ Server.CutRules }} </li>	
+					</ul>
+				</div>
+				<div class="col-md-3">
+					<ul class="list-unstyled">
+						<li><b>Auto League: </b><a class="green" href="\leagues.php?LeagueID={{Server.Sessions[1].LeagueID}}">{{ Server.Server }}</a> </li>
+						
+					</ul>
+				</div>
+			</div>
+	</div>
+	<div class="x_panel">
+	<div class="x-title">
+	<h2> Results </h2>
+	</div>
+	<div class="x_content">
+	<div role="tabpanel" data-example-id="togglable-tabs">
+						<ul class="nav nav-tabs bar_tabs" id="myTab1" role="tablist">
+							{% for item in Server.Sessions %}
+								<li role="presentation" class="{% if item.Type == 'Qualify' %}active{%endif%}"><a href="#tab_{{ item.Type }}" id="{{ item.Type }}tabb" role="tab" data-toggle="tab"  {% if item.Type == 'Qualify' %} aria-expanded="true"{%endif%}>{{ item.Type }}</a></li>
+							{% endfor %}
+								<li role="presentation" class=""><a href="#tab_poschart" id="posecharttabb" role="tab" data-toggle="tab">Position Chart</a></li>
+								<li role="presentation" class=""><a href="#tab_difchart" id="difcharttabb" role="tab" data-toggle="tab">Time Chart</a></li>
+						</ul>
+						<div class="tab-content" id="myTabContent2">
+                        {% for content in Server.Sessions %}
+							{% if content.Type == "Race" %} 
+								{% include 'racesession.phtml' %} 
+							{% else %}
+								{% include 'qualsession.phtml' %} 
+							{% endif %}
+						{% endfor %}
+						<div class="tab-pane fade" id="tab_poschart" role="tabpanel">
+
+                    <canvas id="myChart" style="width: 491px; height: 245px;"></canvas>
+                  </div>
+				  <div class="tab-pane fade" id="tab_difchart" role="tabpanel">
+
+                    <canvas id="difChart" style="width: 491px; height: 245px;"></canvas>
+                  </div>
+   
+</div>
+</div>
+						</div>
+                    </div>
+	
+</div>
+</div>
+		</div>
+	</div>
+	{% include 'footer.phtml' %}
+
+<!--scripts -->
+
+    <!-- jQuery -->
+    <script src="/{{ template }}/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="/{{ template }}/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="/{{ template }}/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="/{{ template }}/vendors/nprogress/nprogress.js"></script>
+
+	<script src="/{{ template }}/vendors/Chart.js/dist/Chart.min.js"></script>
+	
+    <!-- Custom Theme Scripts -->
+    <script src="/{{ template }}/js/custom.js"></script>
+
+	<!--/scripts -->
+	<script>
+var ctx = document.getElementById("difChart");
+var myChart = new Chart(ctx, {
+    type: 'line',
+	maintainAspectRatio: true,
+	responsive: false,
+	lineTension: 0,
+	
+    data: {
+	labels: [{%for num in Server.maxlaps%}
+		{{num}},
+			{%endfor%}
+		],
+        datasets: [
+		{% for key,player in Server.chart %}
+		{
+            label: '{{ key }}',
+            data: [
+			{% for lap in player.dif %}
+				{{ lap }},
+			{% endfor %}
+			],
+			fill: false,
+            lineTension: 0,
+            backgroundColor: "#{{ player.color }}",
+            borderColor: "#{{ player.color }}",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.6,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(255,255,255,255)",
+            pointBackgroundColor: "#{{ player.color }}",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(75,192,192,1)",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 4,
+            pointHitRadius: 10,
+        },
+		{%endfor%}
+		]
+    },
+	
+    options: 
+	{
+		
+		legend: {
+		position: 'bottom',
+	},
+		hoverMode: 'label',
+         stacked: false,
+         scales: {
+             xAxes: [{
+			 ticks: {
+				 autoSkip:true,
+			 },
+              
+                     display: false,
+                     gridLines: {
+                         offsetGridLines: false
+                     },
+                 }
+             ],
+         
+            yAxes: [{
+                ticks: {
+					label: 'Positions',
+                    
+					reverse:true
+                }
+            }]
+        }
+    }
+});
+</script>
+
+	<script>
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+    type: 'line',
+	maintainAspectRatio: true,
+	responsive: false,
+	lineTension: 0,
+	
+    data: {
+	labels: [{%for num in Server.maxlaps%}
+		{{num}},
+			{%endfor%}
+		],
+        datasets: [
+		{% for key,player in Server.chart %}
+		{
+            label: '{{ key }}',
+            data: [
+			{% for lap in player.laps %}
+				{{ lap }},
+			{% endfor %}
+			],
+			fill: false,
+            lineTension: 0,
+            backgroundColor: "#{{ player.color }}",
+            borderColor: "#{{ player.color }}",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.6,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(255,255,255,255)",
+            pointBackgroundColor: "#{{ player.color }}",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(75,192,192,1)",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 4,
+            pointHitRadius: 10,
+        },
+		{%endfor%}
+		]
+    },
+	
+    options: 
+	{
+		
+		legend: {
+		position: 'bottom',
+	},
+		hoverMode: 'label',
+         stacked: false,
+         scales: {
+             xAxes: [{
+			 ticks: {
+				 autoSkip:true,
+			 },
+              
+                     display: false,
+                     gridLines: {
+                         offsetGridLines: false
+                     },
+                 }
+             ],
+         
+            yAxes: [{
+                ticks: {
+					label: 'Positions',
+                    min: 1,
+					reverse:true
+                }
+            }]
+        }
+    }
+});
+</script>
+	
+</body>
+</html>

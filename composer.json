@@ -1,0 +1,7 @@
+{
+    "require": {
+        "twig/twig": "~1.0",
+        "catfan/Medoo": "^1.0",
+		 "ehesp/steam-login": "^1.1"
+    }
+}

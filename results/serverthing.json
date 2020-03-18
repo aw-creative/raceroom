@@ -1,0 +1,349 @@
+{
+   "Server":"ESR Baddogs fun      https://esr-race.com/",
+   "Time":"\/Date(1513768943481)\/",
+   "Experience":"RaceRoom Experience",
+   "Difficulty":"Amateur",
+   "FuelUsage":"Off",
+   "TireWear":"Off",
+   "MechanicalDamage":"Off",
+   "FlagRules":"VisualOnly",
+   "CutRules":"Off",
+   "WreckerPrevention":"On",
+   "MandatoryPitstop":"Off",
+   "Track":"Portimao Circuit",
+   "TrackLayout":"Grand Prix",
+   "Sessions":[
+      {
+         "Type":"Practice",
+         "Players":[
+            {
+               "FullName":"luca desi",
+               "Username":"lucadesi_0",
+               "Car":"Aquila CR1 Sports GT",
+               "CarPerformanceIndex":110,
+               "Position":0,
+               "PositionInClass":0,
+               "BestLapTime":-1,
+               "TotalTime":-1,
+               "FinishStatus":"None",
+               "RaceSessionLaps":[
+
+               ]
+            },
+            {
+               "FullName":"Jaris Zulqarnain",
+               "Username":"x3non_0",
+               "Car":"Aquila CR1 Sports GT",
+               "CarPerformanceIndex":110,
+               "Position":1,
+               "PositionInClass":1,
+               "BestLapTime":117908,
+               "TotalTime":-1,
+               "FinishStatus":"Finished",
+               "RaceSessionLaps":[
+
+               ]
+            },
+            {
+               "FullName":"Rik veenstra",
+               "Username":"Diedo",
+               "Car":"Aquila CR1 Sports GT",
+               "CarPerformanceIndex":110,
+               "Position":2,
+               "PositionInClass":5,
+               "BestLapTime":-1000,
+               "TotalTime":-1,
+               "FinishStatus":"Finished",
+               "RaceSessionLaps":[
+
+               ]
+            },
+            {
+               "FullName":"Zsolt Balassa",
+               "Username":"bzsolti65",
+               "Car":"Aquila CR1 Sports GT",
+               "CarPerformanceIndex":110,
+               "Position":3,
+               "PositionInClass":4,
+               "BestLapTime":-1000,
+               "TotalTime":-1,
+               "FinishStatus":"Finished",
+               "RaceSessionLaps":[
+
+               ]
+            }
+         ]
+      },
+      {
+         "Type":"Qualify",
+         "Players":[
+            {
+               "FullName":"luca desi",
+               "Username":"lucadesi_0",
+               "Car":"Aquila CR1 Sports GT",
+               "CarPerformanceIndex":110,
+               "Position":1,
+               "PositionInClass":1,
+               "BestLapTime":111967,
+               "TotalTime":-1,
+               "FinishStatus":"Finished",
+               "RaceSessionLaps":[
+                  {
+                     "Time":-1000,
+                     "Position":1,
+                     "PitStopOccured":false
+                  }
+               ]
+            },
+            {
+               "FullName":"Zsolt Balassa",
+               "Username":"bzsolti65",
+               "Car":"Aquila CR1 Sports GT",
+               "CarPerformanceIndex":110,
+               "Position":2,
+               "PositionInClass":2,
+               "BestLapTime":114679,
+               "TotalTime":-1,
+               "FinishStatus":"Finished",
+               "RaceSessionLaps":[
+                  {
+                     "Time":-1000,
+                     "Position":2,
+                     "PitStopOccured":false
+                  }
+               ]
+            },
+            {
+               "FullName":"Jaris Zulqarnain",
+               "Username":"x3non_0",
+               "Car":"Aquila CR1 Sports GT",
+               "CarPerformanceIndex":110,
+               "Position":3,
+               "PositionInClass":3,
+               "BestLapTime":118366,
+               "TotalTime":-1,
+               "FinishStatus":"Finished",
+               "RaceSessionLaps":[
+                  {
+                     "Time":-1000,
+                     "Position":3,
+                     "PitStopOccured":false
+                  }
+               ]
+            },
+            {
+               "FullName":"Rik veenstra",
+               "Username":"Diedo",
+               "Car":"Aquila CR1 Sports GT",
+               "CarPerformanceIndex":110,
+               "Position":4,
+               "PositionInClass":4,
+               "BestLapTime":-1000,
+               "TotalTime":-1,
+               "FinishStatus":"Finished",
+               "RaceSessionLaps":[
+                  {
+                     "Time":-1000,
+                     "Position":4,
+                     "PitStopOccured":false
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "Type":"Race",
+         "Players":[
+            {
+               "FullName":"Zsolt Balassa",
+               "Username":"bzsolti65",
+               "Car":"Aquila CR1 Sports GT",
+               "CarPerformanceIndex":110,
+               "Position":1,
+               "PositionInClass":1,
+               "BestLapTime":114523,
+               "TotalTime":696009,
+               "FinishStatus":"Finished",
+               "RaceSessionLaps":[
+                  {
+                     "Time":120365,
+                     "Position":1,
+                     "PitStopOccured":false
+                  },
+                  {
+                     "Time":116694,
+                     "Position":2,
+                     "PitStopOccured":false
+                  },
+                  {
+                     "Time":114523,
+                     "Position":2,
+                     "PitStopOccured":false
+                  },
+                  {
+                     "Time":114548,
+                     "Position":1,
+                     "PitStopOccured":false
+                  },
+                  {
+                     "Time":114709,
+                     "Position":1,
+                     "PitStopOccured":false
+                  },
+                  {
+                     "Time":115167,
+                     "Position":1,
+                     "PitStopOccured":false
+                  }
+               ]
+            },
+            {
+               "FullName":"luca desi",
+               "Username":"lucadesi_0",
+               "Car":"Aquila CR1 Sports GT",
+               "CarPerformanceIndex":110,
+               "Position":2,
+               "PositionInClass":2,
+               "BestLapTime":110943,
+               "TotalTime":0,
+               "FinishStatus":"DidNotFinish",
+               "RaceSessionLaps":[
+                  {
+                     "Time":120506,
+                     "Position":2,
+                     "PitStopOccured":false
+                  },
+                  {
+                     "Time":113430,
+                     "Position":1,
+                     "PitStopOccured":false
+                  },
+                  {
+                     "Time":110943,
+                     "Position":1,
+                     "PitStopOccured":false
+                  }
+               ]
+            },
+            {
+               "FullName":"Rik veenstra",
+               "Username":"Diedo",
+               "Car":"Aquila CR1 Sports GT",
+               "CarPerformanceIndex":110,
+               "Position":3,
+               "PositionInClass":3,
+               "BestLapTime":140755,
+               "TotalTime":0,
+               "FinishStatus":"DidNotFinish",
+               "RaceSessionLaps":[
+                  {
+                     "Time":182151,
+                     "Position":3,
+                     "PitStopOccured":false
+                  },
+                  {
+                     "Time":140755,
+                     "Position":3,
+                     "PitStopOccured":false
+                  }
+               ]
+            },
+            {
+               "FullName":"Jaris Zulqarnain",
+               "Username":"x3non_0",
+               "Car":"Aquila CR1 Sports GT",
+               "CarPerformanceIndex":110,
+               "Position":4,
+               "PositionInClass":4,
+               "BestLapTime":123370,
+               "TotalTime":0,
+               "FinishStatus":"DidNotFinish",
+               "RaceSessionLaps":[
+                  {
+                     "Time":123370,
+                     "Position":3,
+                     "PitStopOccured":false
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "Type":"Race2",
+         "Players":[
+            {
+               "FullName":"Zsolt Balassa",
+               "Username":"bzsolti65",
+               "Car":"Aquila CR1 Sports GT",
+               "CarPerformanceIndex":110,
+               "Position":1,
+               "PositionInClass":1,
+               "BestLapTime":-1000,
+               "TotalTime":0,
+               "FinishStatus":"DidNotFinish",
+               "RaceSessionLaps":[
+                  {
+                     "Time":-1000,
+                     "Position":1,
+                     "PitStopOccured":false
+                  }
+               ]
+            },
+            {
+               "FullName":"luca desi",
+               "Username":"lucadesi_0",
+               "Car":"Aquila CR1 Sports GT",
+               "CarPerformanceIndex":110,
+               "Position":2,
+               "PositionInClass":2,
+               "BestLapTime":-1000,
+               "TotalTime":0,
+               "FinishStatus":"DidNotFinish",
+               "RaceSessionLaps":[
+                  {
+                     "Time":-1000,
+                     "Position":2,
+                     "PitStopOccured":false
+                  }
+               ]
+            },
+            {
+               "FullName":"Rik veenstra",
+               "Username":"Diedo",
+               "Car":"Aquila CR1 Sports GT",
+               "CarPerformanceIndex":110,
+               "Position":3,
+               "PositionInClass":3,
+               "BestLapTime":-1000,
+               "TotalTime":0,
+               "FinishStatus":"DidNotFinish",
+               "RaceSessionLaps":[
+                  {
+                     "Time":-1000,
+                     "Position":3,
+                     "PitStopOccured":false
+                  }
+               ]
+            },
+            {
+               "FullName":"Jaris Zulqarnain",
+               "Username":"x3non_0",
+               "Car":"Aquila CR1 Sports GT",
+               "CarPerformanceIndex":110,
+               "Position":4,
+               "PositionInClass":4,
+               "BestLapTime":-1000,
+               "TotalTime":0,
+               "FinishStatus":"DidNotFinish",
+               "RaceSessionLaps":[
+                  {
+                     "Time":-1000,
+                     "Position":4,
+                     "PitStopOccured":false
+                  }
+               ]
+            }
+         ]
+      }
+   ]
+}

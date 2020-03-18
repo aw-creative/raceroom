@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteRule ^server/([^/]*)\.html$ /server.php?ID=$1 [L]
+RewriteRule ^league/([^/]*)\.html$ /league.php?ID=$1 [L]
+RewriteRule ^driver\.html$ /drivers.php [L]
+RewriteRule ^userleagues\.html$ /UserLeague.php [L]
+RewriteRule ^drivers/([^/]*)\.html$ /drivers.php?ID=$1 [L]
+RewriteRule ^profile/([^/]*)\.html$ /profile.php?ID=$1 [L]
+RewriteRule ^userleague/([^/]*)\.html$ /UserLeague.php?LeagueID=$1 [L]
+RewriteRule ^myleagues\.html$ /UserLeague.php?user=1 [L]

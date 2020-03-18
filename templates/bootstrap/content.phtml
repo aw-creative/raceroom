@@ -1,0 +1,192 @@
+<!-- page content -->
+   
+          <!-- top tiles -->
+          <div class="row tile_count">
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Drivers</span>
+              <div class="count">{{stats.players}}</div>
+              
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-clock-o"></i> Total Laps</span>
+              <div class="count">{{ stats.laps }}</div>
+              
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Races</span>
+              <div class="count green">{{ stats.races }}</div>
+				 <span class="count_bottom"> <i class="green">{{stats.lastweekservers}}</i> Races this week</span>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Leagues</span>
+              <div class="count">{{ stats.leagues }}</div>
+              
+            </div>
+            
+            <div class="hidden-md hidden-xs col-md-4 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Most Used Car</span>
+              <div class="count">{{stats.car}}</div>
+             
+            </div>
+			
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+ <div class="x_panel">
+                <div class="x_title">
+				<h3> Welcome to Raceroom Results</h3>
+				</div>
+			<div class="x_content">
+			<p>This is an online tool for saving and displaying RaceRoom multiplayer sessions to keep track of all your stats, sessions and rankings. The site is currently in beta and you may encounter bugs and issues, please keep checking back for new features and updates</p>
+			</div>
+			</div>
+			</div>
+			</div>
+          <div class="row">
+            <div class="col-md-8 col-sm-4 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Recent Servers</h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+				 <div class="x_content">
+                  <div class="dashboard-widget-content">
+				<div class="" role="tabpanel" data-example-id="togglable-tabs">
+                    <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                      <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Ranked Servers</a>
+                      </li>
+                      <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Unranked Servers</a>
+                      </li>
+					  <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Add your Server</a>
+					  </li>
+                      
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                      <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                        <p>If a server has at least 4 players and lasts for 6 or more laps then it will be tagged as a ranked session. You score points in these sessions and they can be added to Leagues.</p>
+						  <ul class="list-unstyled timeline">
+
+						  {% for item in data.RankedServers %}	 
+						<li>
+						<div class="block">
+							<div class="tags">
+								<a href class="tag ranked "><i class="fa fa-trophy"></i> Ranked </a>
+							</div>
+							<div class="block_content">
+							<h2 class="title"> <a href="/server/{{ item.ID}}.html">{{ item.Name }} - {{ item.Track }}</a></h2>
+								<div class="byline">
+                             <span class="green">{{item.Month}} {{item.Day}} {{item.Year}}</span> <a>{{item.Time}}</a>
+                            </div>
+							</div>
+							</div>
+                      </li>
+						{% endfor %}	
+                      </ul>
+                      </div>
+                      <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                        <p>These servers did not contain enough players or did not have enough laps completed to qualify for the ranked status, dont worry though, You can still see all the same data.</p>
+						    <ul class="list-unstyled timeline">
+
+						  {% for item in data.UnrankedServers %}	 
+						<li>
+						<div class="block">
+							<div class="tags">
+								<a href class="tag unranked "> Unranked </a>
+							</div>
+							<div class="block_content">
+							<h2 class="title"> <a href="/server/{{ item.ID}}.html">{{ item.Name }} - {{ item.Track }}</a></h2>
+								<div class="byline">
+                             <span class="green">{{item.Month}} {{item.Day}} {{item.Year}}</span> <a>{{item.Time}}</a>
+                            </div>
+							</div>
+							</div>
+                      </li>
+						{% endfor %}	
+                      </ul>
+                      </div>
+					  <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
+					  <p>If you would like to add your own servers results to the site please paste the following code into your RaceRoom Dedicated Servers results upload section 
+<code>ftp://rrlupload:raceroom@raceroomresults.net/*.json </code>
+Results are processed every 5 minutes and should appear in search results</p>
+					  </div>
+                    </div>
+                  </div>
+               
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                  <div class="x_panel">
+                    <div class="x_title">
+                      <h2>Top Drivers</h2>
+                      <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Settings 1</a>
+                            </li>
+                            <li><a href="#">Settings 2</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                      </ul>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                      <div class="dashboard-widget-content">
+                       <p>If a Driver finishes a ranked session then they are awarded points, the table below shows the top 10 drivers across the entire site</p>
+                         
+
+                          <table class="countries_list">
+                            <tbody>
+							{% for name , points in stats.topdrivers %}	
+                              <tr>
+                                <td><a class="green" href="drivers/{{points.ID}}.html">{{points.FullName}}</a></td>
+                                <td class="text-right">{{points.totalpoints}} Points</td>
+                              </tr>
+                              {%endfor%}
+                            </tbody>
+                          </table>  
+                      </div>
+                    </div>
+                  </div>
+				  <div class="x_panel">
+				  <div class="x_title"><h4>Advertisment</h4></div>
+				  <div class="x_content">
+				  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Idleracing -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5752454262760375"
+     data-ad-slot="3570953322"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+				  </div>
+                </div>
+				</div>
+
+        
+
+
+                
+                
+                <!-- end of weather widget -->
+              </div>
+            </div>
+          </div>
+        </div>
+<!-- /page content -->
